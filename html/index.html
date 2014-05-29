@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/
+								DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!--
+Copyright: Darren Hester 2006, http://www.designsbydarren.com
+License: Released Under the "Creative Commons License", http://creativecommons.org/licenses/by-nc/2.5/
+-->
+
+<head>
+
+<!-- Meta Data -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /><meta name="description" content="Free 2-Column CSS Web Design Template" /><meta name="keywords" content="Free, 2-Column, CSS, Web, Design, Template" />
+
+<!-- Site Title -->
+<title>454 Replicate Filter</title>
+
+<!-- Link to Style External Sheet -->
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+
+</head>
+  
+<body>
+
+<div id="page_wrapper">
+
+<div id="page_header">
+<h1>Schmidt Lab</h1>
+<h2>Power, efficiency and microbial communities</h2>
+
+</div>
+
+<div id="menu_bar">
+<ul>
+<li><a href="../">Home</a></li>
+<li><a href="../research.html">Research</a></li>
+<li><a href="../data.html">Data</a></li>
+<li><a href="../software.html">Software</a></li>
+<li><a href="../protocols.html">Protocols</a></li>
+</ul>
+</div>
+
+<div id="content_wrapper">
+
+<div id="left_side">
+
+<h2>454 Replicate Filter</h2>
+
+
+<p>This tool clusters and filters out artificially replicated sequences in 454 data.  It returns a fasta file of unique sequences and a list of the sequences in each cluster.  This tool was originally described in <b>Citation</b>
+
+<h3>Upload file</h3>
+
+<form method="POST" action="../cgi-bin/repeats_html.cgi" enctype="multipart/form-data">
+				
+	<p>	Upload a Fasta file of 454 metagenomic reads
+
+<p><p class="nomargin"><input type="file" name="filename">
+<br>--------------------------------
+
+<h3>Cluster replicates</h3>
+<!--
+<p><INPUT type="checkbox" NAME="duplicates"><b>  Remove identical replicates only</b>
+<br>This filter is used in MG-RAST, for example
+-->
+
+<p>Using the default settings identifies artifically replicated sequences.  To identify only exact duplicates (as in MG-RAST), use 1.0 for the sequence identity cutoff and 1.0 for the length difference requirement.
+
+<p><b>Sequence identity cutoff:</b> <input type="text" name="cutoff" size="4" value="0.9">
+<input type="button" value="help" onClick="alert('The sequence identity cutoff is cd-hits global sequence identity calculated as the number of identical amino acids in the alignment divided by the full length of the shorter sequence.')">
+<br>
+This value should be between 0.85 and 1.0<br>
+<!--
+<p class="small">This is cd-hit's 'global sequence identity' calculated as the number of identical amino acids in alignment divided by the full length of the shorter sequence
+-->
+<!--
+<p class="nomargin">
+-->
+<p>
+<b>Length difference requirement:</b> <input type="text" name="length" size="4" value="0">
+<input type="button" value="help" onClick="alert('The length difference requirement is the percent of the sequence that is required to match. 0 is the default and means that there is no length restrictions.  This allows for reads of variable lengths.  1 will require that all the sequences in a cluster are the same length.')">
+<br>
+This value should be between 0 and 1.0<br>
+<!--
+<p class="small">The percent of the sequence that is required to match. 0 is the default and means that there is no length restrictions.  This allows for reads of variable lengths.  1 will require that all the sequences in a cluster are the same length.
+-->
+		<p>
+
+<!--
+<p>You can wait for the analysis to be done or get an email when it's finished.  Enter your email address
+if you want email notification.
+<br><b>Email:</b><input type="textbox" name="email" size="24" value=''>
+-->
+
+<p>		<input type="submit" value="Evaluate Dataset">
+<br>It can take up to 10 minutes to upload these large files, so please be patient!<br>
+
+
+<h3>Advanced options</h3>
+<p>
+<b>Number of beginning base pairs to check:</b> <input type="text" name="bp" size=4 value="3">
+
+
+<p>By default this program checks to make sure the first 3 base pairs of every sequence in a 
+cluster are identical, ensuring that any sequences removed are both similiar to each other
+and start at the same position, our criteria for replicates caused by 454 sequencing artifacts.  
+If you choose to, you can change this setting here.  In datasets for complex communities, this 
+setting typically excludes sequences that should be clustered together, because sequencing errors
+at the beginning of the sequence cause a mismatch.  In communities that are simpler and 
+have more coverage, this setting ensures that true biological replicates are not being clustered
+and excluded.  Be familiar with your data and check the output before changing this setting.
+
+
+
+
+
+
+
+<p>--------------------------------
+<!--
+<p>[ <a href="#top">Back to top</a> ]</p>
+-->
+</div>
+
+
+<div id="right_side">
+
+		
+<p class="block"><strong>Note: </strong>
+<br>
+<!--
+This tool allows you to filter out artificially replicated sequences in your 454 data that are
+introduced by artifacts in the 454 sequencing.  
+-->
+Sequences that cluster together by <a href=http://www.bioinformatics.org/cd-hit/>CD-HIT</a> and start 
+with the same beginning base pairs are identified as replicates and clustered.  
+If many sequences are expected to look similiar and start at the same position, this is not 
+the right tool for your data, e.g. 454 tag data.
+<p class="block"><strong>Availability:</strong>
+<br>These scripts are all open source and distributed under the Gnu GPL.  They can also be run at the command line without the web interface.   They are currently available if you contact the authors and will be made available on this site soon.
+<p class="block"><strong>Comments/Questions:</strong>
+<br>If you have any comments or questions about these programs, please contact the <a href=mailto:tkteal@msu.edu>authors</a>.
+
+</div>
+
+
+</div>
+
+
+
+
+<div id="page_footer">
+<p><font size=-3>&nbsp<br />
+    
+
+<!--
+<a href="http://validator.w3.org/check?uri=referer" target="_blank">Valid XHTML 1.0 Transitional</a></p></font>
+-->
+</div>
+	  
+</div>
+
+</body>
+</html>
