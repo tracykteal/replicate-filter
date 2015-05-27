@@ -1,5 +1,7 @@
 These scripts were developed to find artifactually replicated
-sequences in 454 data, published in CITATION
+sequences in 454 data, published in Teal T.K., T.M. Schmidt.  2010. 
+Identifying and removing artificial replicates from 454 pyrosequencing data.  
+Cold Spring Harbor Protocols  Apr 2010. 
 
 Copyright 2009 Thomas Schmidt laboratory.
 This program is distrubuted under the terms of the GNU General Public License.
